@@ -2,11 +2,14 @@
   "name": "nucleus-one-playwright",
   "version": "1.0.0",
   "scripts": {
-    "test": "npx playwright test",
-    "cucumber": "cucumber-js"
+    "clean:js": "rimraf allure-results/js",
+    "test": "npm run clean:js && playwright test",
+    "report": "allure generate allure-results/js --clean -o allure-report && allure open allure-report"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^12.7.0",
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.58.2",
+    "allure-commandline": "^2.38.1",
+    "allure-playwright": "^3.6.0",
+    "rimraf": "^6.1.3"
   }
 }
