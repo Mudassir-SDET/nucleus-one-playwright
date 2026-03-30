@@ -1,8 +1,8 @@
-# Nucleus One - Playwright + Cucumber Automation Tests
+# Nucleus One - Playwright Automation Tests
 
 ## Project Overview
 
-This project contains automated login tests for the **Nucleus One application** using **Playwright with JavaScript** and **Cucumber** for BDD-style testing.  
+This project contains automated login tests for the **Nucleus One application** using **Playwright with JavaScript**.  
 
 The tests cover both **positive (happy path)** and **negative login scenarios**, verifying the login functionality and error messages.
 
@@ -11,10 +11,10 @@ The tests cover both **positive (happy path)** and **negative login scenarios**,
 ## Tech Stack
 
 * **Playwright** – browser automation  
-* **Cucumber JS** – BDD framework for defining scenarios  
 * **JavaScript / Node.js** – scripting and test execution  
 
 ---
+
 ## Project Structure
 
 ```text
@@ -22,17 +22,10 @@ nucleus-one
 ├── pages
 │   └── login.page.js       # Page Object for Login page
 ├── tests
-│   └── login.spec.js       # Playwright test cases (optional, parallel to Cucumber)
-├── features
-│   └── login.feature       # Cucumber feature file with scenarios
-├── step-definitions
-│   └── login.steps.js      # Step definitions for feature file
-├── support
-│   └── hooks.js            # Cucumber hooks to launch/close browser
+│   └── login.spec.js       # Playwright test cases
 ├── test-data
 │   └── users.json          # Test credentials for positive/negative scenarios
 ├── playwright.config.js    # Playwright configuration
-├── cucumber.js             # Cucumber configuration
 ├── package.json            # Project dependencies
 └── README.md               # Project documentation
 ---
@@ -63,17 +56,14 @@ npx playwright test             # run all Playwright tests
 npx playwright test --headed    # run with browser visible
 npx playwright show-report      # view HTML report
 ``` 
-## Run Cucumber + Playwright BDD Tests
-```bash
-npx cucumber-js --require support/**/*.js --require step-definitions/**/*.js
+
+```
 ``` 
 ## Notes
 
-Hooks are now used to manage browser instances per scenario 
+Each test runs in an isolated browser context, preventing conflicts.
 
-Each scenario runs in its own isolated browser session, preventing conflicts.
-
-Step definitions use this.page from hooks to interact with Playwright page objects.
+Page Object pattern is used for maintainability (login.page.js).
 
 ## Author
 Mudassir Moavia
